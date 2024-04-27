@@ -1,0 +1,23 @@
+/* CSS var and font */
+:root{
+    font-family:'Nunito',sans-serif;
+}
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Importance smooth */
+html {
+    scroll-behavior: smooth; 
+}
+
+.nav{
+  display:flex;
+  background-color:rgb(187, 190, 192);
+  height:10%;
+  width:100%;
+}
