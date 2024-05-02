@@ -7,9 +7,7 @@ function Book(name,author,pages,read) {
 }
 
 // Book array
-const myLibrary = [new Book("Harry Potter","Rowling",400,false), 
-                   new Book("Harry Potter","Rowling",300,false), 
-                   new Book("Harry Potter","Rowling",500,false)];
+const myLibrary = [new Book("Harry Potter","J.K.Rowling",400,false),];
 
 // Add prototype to change read status
 Book.prototype.readToggle = function() {
@@ -30,11 +28,12 @@ function displayBook(){
   bookContainer.innerHTML = '';
   for(let book of myLibrary){
     let div = document.createElement("div");
+    div.className = "book";
     div.innerHTML = 
-    `<p>${book.name}</p>` +  
-    `<p>${book.author}</p>` + 
-    `<p>${book.pages}</p>`  +
-    `<p>${book.read}</p>` +
+    `<p>Name: ${book.name}</p>` +  
+    `<p>Author: ${book.author}</p>` + 
+    `<p>Pages: ${book.pages}</p>`  +
+    `<p>Read status: ${book.read}</p>` +
     `<button class="readToggle" data-index="${bookNum}" >Change status</button>` +
     `<button class="delete" data-index="${bookNum}">Delete</button>`;
     bookNum++;
