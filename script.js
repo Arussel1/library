@@ -7,7 +7,6 @@ function Book(name,author,pages,read) {
   this.pages = pages;
   this.read = read;
 }
-
 function addBookToLibrary() {
   let bookName = document.forms["addBook"].name.value;
   let author = document.forms["addBook"].author.value;
@@ -17,20 +16,26 @@ function addBookToLibrary() {
 }
 
 function displayBook(){
+  let bookNum = 0;
   let bookContainer = document.querySelector(".bookContainer");
+  bookContainer.innerHTML = '';
   for(let book of myLibrary){
     let div = document.createElement("div");
     div.innerHTML = 
-    `<p>${book.name}<\p>` +   `<p>${book.author}<\p>` + `<p>${book.pages}<\p>`  +`<p>${book.read}<\p>` ;
+    `<p>${book.name}</p>` +  
+    `<p>${book.author}</p>` + 
+    `<p>${book.pages}</p>`  +
+    `<p>${book.read}</p>` +
+    `<button class="delete" id=${'' + bookNum}>Delete</button>`;
+    bookNum++;
     bookContainer.appendChild(div);
   }
 } 
-displayBook();
-// open + close dialog
+// open, close form and delete a book
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
-
+const deleteBooks = document.querySelectorAll(".delete");
 showButton.addEventListener("click", () => {
   dialog.showModal();
 });
@@ -41,3 +46,11 @@ closeButton.addEventListener("click", () => {
   dialog.close();
   event.preventDefault();
 });
+document.querySelector('.bookContainer').addEventListener('click', function(event) {
+  if (event.target.className === 'delete') {
+    let index = Number(event.target.id);
+    myLibrary.splice(index, 1);
+    displayBook();
+  }
+});
+displayBook();
