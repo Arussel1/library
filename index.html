@@ -15,16 +15,16 @@
     </div>
     <div class="bookContainer"></div>
     <dialog>
-        <button autofocus> Submit</button>
         <form name="addBook">
             <label for="name">Name:</label>
-            <input type="text" name="name">
+            <input type="text" name="name" required><br>
             <label for="author">Author:</label>
-            <input type="text" name="author">
+            <input type="text" name="author" required><br>
             <label for="page">Pages:</label>
-            <input type="number" name="page">
+            <input type="number" name="page" required><br>
             <label for="read">Have you read it ?</label>
-            <input type="checkbox" name="read">
+            <input type="checkbox" name="read"><br>
+            <button type="submit" autofocus> Submit</button>
         </form>
     </dialog>
     <button class="add"> + Add a book</button>

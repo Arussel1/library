@@ -19,7 +19,7 @@ function addBookToLibrary() {
   let bookName = document.forms["addBook"].name.value;
   let author = document.forms["addBook"].author.value;
   let page = parseInt(document.forms["addBook"].page.value);
-  let read = document.forms["addBook"].read.value == true;
+  let read = document.forms["addBook"].read.checked;
   myLibrary.push(new Book(bookName,author,page,read));
 }
 function displayBook(){
@@ -43,19 +43,18 @@ function displayBook(){
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
-
+const form = document.forms["addBook"];
 // Dialog opening
 showButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
 // Dialog closing
-closeButton.addEventListener("click", () => {
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); // Stop the form from submitting normally
   addBookToLibrary();
   displayBook();
   dialog.close();
-  event.preventDefault();
 });
 
 // Event listener for deleting and chaging read status
